@@ -5,7 +5,7 @@
 #include "Referee.h"
 
 int main() {
-    Human human("Aadi");
+    Human  human("Aadi");
     Computer computer;
     Referee referee;
 
