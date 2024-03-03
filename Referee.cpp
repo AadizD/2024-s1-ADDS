@@ -1,4 +1,3 @@
-// Referee.cpp
 #include "Referee.h"
 
 Referee::Referee() {}
@@ -17,11 +16,11 @@ Player* Referee::refGame(Player* player1, Player* player2) {
 
 char Referee::getWinner(char move1, char move2) {
     if (move1 == move2)
-        return ' '; // Tie
+        return ' '; 
     else if ((move1 == 'R' && move2 == 'S') ||
              (move1 == 'S' && move2 == 'P') ||
              (move1 == 'P' && move2 == 'R'))
-        return move1; // Player 1 wins
+        return move1; 
     else
-        return move2; // Player 2 wins
+        return move2; 
 }

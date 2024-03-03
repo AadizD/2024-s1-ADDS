@@ -1,4 +1,3 @@
-// Human.cpp
 #include "Human.h"
 #include <iostream>
 

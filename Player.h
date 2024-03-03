@@ -1,4 +1,3 @@
-// Player.h
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -10,4 +9,4 @@ public:
     virtual std::string getName() = 0;
 };
 
-#endif // PLAYER_H
+#endif 

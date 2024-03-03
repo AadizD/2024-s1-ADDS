@@ -1,4 +1,3 @@
-// main.cpp
 #include <iostream>
 #include "Human.h"
 #include "Computer.h"

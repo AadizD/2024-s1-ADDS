@@ -1,4 +1,3 @@
-// Referee.h
 #ifndef REFEREE_H
 #define REFEREE_H
 
@@ -13,4 +12,4 @@ private:
     char getWinner(char move1, char move2);
 };
 
-#endif // REFEREE_H
+#endif 

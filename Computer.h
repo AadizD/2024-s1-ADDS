@@ -1,4 +1,3 @@
-// Computer.h
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
@@ -10,4 +9,4 @@ public:
     std::string getName() override;
 };
 
-#endif // COMPUTER_H
+#endif 
