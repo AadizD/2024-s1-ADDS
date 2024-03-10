@@ -7,13 +7,21 @@
 #include <string>
 
 int main() {
-    Player* p1=new Human("Mie");
-    Player* p2=new Computer();
+    // Create a new Human player instance with the name "Mie"
+    Player* player1 = new Human("Mie");
 
+    // Create a new Computer player instance
+    Player* player2 = new Computer();
+
+    // Create a Referee instance
     Referee ref=Referee();
 
-    Player* winner=ref.refGame(p1, p2);
+    // Call the refGame function of Referee instance to determine the winner
+    Player* winner=ref.refGame(player1, player2);
+
+    // Print the name of the winner
     std::cout<< winner->getName()<< std::endl;
 
+    // Terminate the program
     return 0;
 };

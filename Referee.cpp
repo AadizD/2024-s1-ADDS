@@ -3,15 +3,18 @@
 
 Referee::Referee() {};
 
+
+// This function is used to referee a game between two players. It takes in two Player pointers as arguments, one for each player.
+
 Player* Referee::refGame (Player*player1, Player* player2) {
-    Move* p1_move = player1->makeMove();
-    Move* p2_move = player2->makeMove();
+   Move* player1_move = player1->makeMove(); // Create a Move object for player1
+   Move* player2_move = player2->makeMove(); // Create a Move object for player2
 
-    if (p1_move->getName() == p2_move->getName()) {
-        return nullptr; // Tie
-    } else if (p2_move->isBeatenBy(p1_move->getName())) {
-        return player1;
-    }
+   if (player1_move->getName() == player2_move->getName()) { // Check if the moves have the same name
+       return nullptr; // Tie
+   } else if (player2_move->isBeatenBy(player1_move->getName())) { // Check if the move of player2 is beaten by the move of player1
+       return player1;
+   }
 
-    return player2;
+   return player2;
 }
