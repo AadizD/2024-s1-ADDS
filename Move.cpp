@@ -8,7 +8,7 @@
 
 int main() {
     // Create a new Human player with the name "Mie"
-    Player* P1 = new Human("Aadi");
+    Player* P1 = new Human("Mie");
 
     // Create a new Computer player
     Player* P2 = new Computer();
