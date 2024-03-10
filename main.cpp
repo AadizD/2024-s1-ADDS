@@ -1,19 +1,29 @@
-#include <iostream>
-#include "Human.h"
+#include "Player.h"
 #include "Computer.h"
+#include "Human.h"
 #include "Referee.h"
 
+#include <iostream>
+#include <string>
+
 int main() {
-    Human humanPlayer("Mei");
-    Computer computerPlayer;
-    Referee referee;
+    Player* Player1 = new Human("Aadi");
 
-    Player* winner = referee.refGame(&humanPlayer, &computerPlayer);
+    // Create a new Computer player
+    Player* Player2 = new Computer();
 
-    if (winner == nullptr)
-        std::cout << "It's a Tie." << std::endl;
-    else
-        std::cout << winner->getName() << " Wins." << std::endl;
+    // Create a Referee object
+    Referee ref = Referee();
+
+    // Here, The refGame function from Referee class will determine the winner between Player1 and Player2
+    Player* winner = ref.refGame(Player1, Player2);
+
+    // Print the name of the winner
+    std::cout << winner->getName() << std::endl;
+
+    // And the allocated memory would get cleaned up here
+    delete Player1;
+    delete Player2;
 
     return 0;
-}
+};

@@ -1,43 +1,30 @@
-// Move.h
-#ifndef MOVE_H
-#define MOVE_H
+#include "Player.h"
+#include "Computer.h"
+#include "Human.h"
+#include "Referee.h"
 
+#include <iostream>
 #include <string>
 
-class Move {
-public:
-    virtual std::string getName() const = 0;
-    virtual bool beats(const Move* opponent) const = 0;
-};
+int main() {
+    // Create a new Human player with the name "Mie"
+    Player* P1 = new Human("Aadi");
 
-class Monkey : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
+    // Create a new Computer player
+    Player* P2 = new Computer();
 
-class Robot : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
+    // Create a Referee object
+    Referee ref = Referee();
 
-class Pirate : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
+    // The function will determine the winner of the game between p1 and p2
+    Player* winner = ref.refGame(P1, P2);
 
-class Ninja : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
+    // Output the name of the winner to the console
+    std::cout << winner->getName() << std::endl;
 
-class Zombie : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
+    // Here we will, Clean up the dynamically allocated memory
+    delete P1;
+    delete P2;
 
-#endif // MOVE_H
+    return 0;
+}

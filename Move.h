@@ -1,43 +1,19 @@
-// Move.h
 #ifndef MOVE_H
 #define MOVE_H
 
 #include <string>
+#include <vector>
 
 class Move {
-public:
-    virtual std::string getName() const = 0;
-    virtual bool beats(const Move* opponent) const = 0;
+    private:
+        std::string moveName;
+        std::vector<std::string> losesTo;
+
+    public:
+        Move(std::string name, std::vector<std::string>losesTo);
+
+        std::string getName();
+        bool isBeatenBy(std::string move);
 };
 
-class Monkey : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
-
-class Robot : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
-
-class Pirate : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
-
-class Ninja : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
-
-class Zombie : public Move {
-public:
-    std::string getName() const override;
-    bool beats(const Move* opponent) const override;
-};
-
-#endif // MOVE_H
+#endif

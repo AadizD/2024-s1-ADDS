@@ -1,26 +1,27 @@
 #include "Referee.h"
+#include "Move.h"
 
-Referee::Referee() {}
+// Constructor for Referee class
+Referee::Referee(){};
 
-Player* Referee::refGame(Player* player1, Player* player2) {
-    char move1 = player1->makeMove();
-    char move2 = player2->makeMove();
-    char winner = getWinner(move1, move2);
-    if (winner == move1)
-        return player1;
-    else if (winner == move2)
-        return player2;
-    else
-        return nullptr;
-}
+// Return: a pointer to the winning Player object, or nullptr if there is no winner
+Player *Referee::refGame(Player *player1, Player *player2)
+{
+   // Each player makes a move
+   Move *player1_move = player1->makeMove();
+   Move *player2_move = player2->makeMove();
 
-char Referee::getWinner(char move1, char move2) {
-    if (move1==move2)
-        return ' '; 
-    else if ((move1=='R' && move2=='S') ||
-             (move1=='S' && move2=='P') ||
-             (move1=='P' && move2=='R'))
-        return move1; 
-    else
-        return move2; 
+   // If the moves have the same name, it is a tie
+   if (player1_move->getName() == player2_move->getName())
+   {
+       return nullptr; 
+   }
+   // If player2's move is beaten by player1's move, player1 wins
+   else if (player2_move->isBeatenBy(player1_move->getName()))
+   {
+       return player1;
+   }
+
+   // Otherwise, player2 wins
+   return player2;
 }
