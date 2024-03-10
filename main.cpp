@@ -7,23 +7,13 @@
 #include <string>
 
 int main() {
-    Player* Player1 = new Human("Aadi");
+    Player* p1=new Human("Mie");
+    Player* p2=new Computer();
 
-    // Create a new Computer player
-    Player* Player2 = new Computer();
+    Referee ref=Referee();
 
-    // Create a Referee object
-    Referee ref = Referee();
-
-    // Here, The refGame function from Referee class will determine the winner between Player1 and Player2
-    Player* winner = ref.refGame(Player1, Player2);
-
-    // Print the name of the winner
-    std::cout << winner->getName() << std::endl;
-
-    // And the allocated memory would get cleaned up here
-    delete Player1;
-    delete Player2;
+    Player* winner=ref.refGame(p1, p2);
+    std::cout<< winner->getName()<< std::endl;
 
     return 0;
 };
