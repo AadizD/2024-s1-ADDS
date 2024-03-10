@@ -1,30 +1,19 @@
-#include "Player.h"
-#include "Computer.h"
-#include "Human.h"
-#include "Referee.h"
-
-#include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
 
-int main() {
-    // Create a new Human player with the name "Mie"
-    Player* P1 = new Human("Mie");
+#include "Move.h"
 
-    // Create a new Computer player
-    Player* P2 = new Computer();
+Move::Move(std::string name, std::vector<std::string> losesTo) : moveName(name), losesTo(losesTo) {};
 
-    // Create a Referee object
-    Referee ref = Referee();
+std::string Move::getName() {
+    return this->moveName;
+}
 
-    // The function will determine the winner of the game between p1 and p2
-    Player* winner = ref.refGame(P1, P2);
+bool Move::isBeatenBy(std::string move) {
+    if(std::find(this->losesTo.begin(), this->losesTo.end(), move) != this->losesTo.end()) {
+        return true;
+    }
 
-    // Output the name of the winner to the console
-    std::cout << winner->getName() << std::endl;
-
-    // Here we will, Clean up the dynamically allocated memory
-    delete P1;
-    delete P2;
-
-    return 0;
+    return false;
 }
