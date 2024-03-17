@@ -1,20 +1,11 @@
-#include "Truckloads.h"
+#include "TruckLoads.h"
 
 int Truckloads::numTrucks(int numCrates, int loadSize) {
+    // Base case: If there are fewer crates than the load size, return 1 truck
     if (numCrates <= loadSize) {
-        return 1; // Base case: all crates fit in one truckload
-    } else {
-        // Calculate the number of full truckloads
-        int fullTrucks = numCrates / loadSize;
-
-        // Calculate the number of remaining crates after filling full truckloads
-        int remainingCrates = numCrates % loadSize;
-
-        // If there are remaining crates, add one more truck
-        if (remainingCrates > 0) {
-            return fullTrucks + 1;
-        } else {
-            return fullTrucks;
-        }
+        return 1;
     }
+    // Recursive case: Split the load into two equal parts and calculate trucks needed
+    int halfLoad = numCrates / 2;
+    return numTrucks(halfLoad, loadSize) + numTrucks(numCrates - halfLoad, loadSize);
 }
