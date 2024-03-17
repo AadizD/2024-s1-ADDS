@@ -1,32 +1,11 @@
-#include <iostream>
+#include "Truckloads.h"
 
-class Truckloads {
-public:
-  int numTrucks(int numCrates, int loadSize) {
-    // Base cases:
+int TruckLoads::numTrucks(int numCrates, int loadSize) {
+    // Base case: If there are fewer crates than the load size, return 1 truck
     if (numCrates <= loadSize) {
-      return 1; // One truck can handle all crates
-    } else if (numCrates % 2 == 0) {
-      return numTrucks(numCrates / 2, loadSize); // Divide crates in half if even number
-    } else {
-      return 1 + numTrucks(numCrates / 2 + 1, loadSize); // +1 for remaining crate on odd division
+        return 1;
     }
-  }
-};
-
-int main() {
-  int numCrates, loadSize;
-
-  std::cout << "Enter number of crates: ";
-  std::cin >> numCrates;
-
-  std::cout << "Enter maximum crates per truck: ";
-  std::cin >> loadSize;
-
-  Truckloads truckloads;
-  int trucksNeeded = truckloads.numTrucks(numCrates, loadSize);
-
-  std::cout << "Number of trucks needed: " << trucksNeeded << std::endl;
-
-  return 0;
+    // Recursive case: Split the load into two equal parts and calculate trucks needed
+    int halfLoad = numCrates / 2;
+    return numTrucks(halfLoad, loadSize) + numTrucks(numCrates - halfLoad, loadSize);
 }
