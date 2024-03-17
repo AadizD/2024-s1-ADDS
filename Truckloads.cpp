@@ -8,7 +8,7 @@ int Truckloads::numTrucks(int numCrates, int loadSize) {
         int fullTrucks = numCrates / loadSize;
 
         // Calculate the number of remaining crates after filling full truckloads
-        int remainingCrates = numCrates % loadSize;
+        int remainingCrates = numCrates / loadSize;
 
         // If there are remaining crates, add one more truck
         if (remainingCrates > 0) {
