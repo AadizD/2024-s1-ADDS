@@ -1,41 +1,24 @@
 #include "Reverser.h"
 #include <cmath>
-#include <string>
-
+using namespace std;
 
 int Reverser::reverseDigit(int value) {
     if (value < 0) {
-        return -1; // Error indicator for invalid input
-    } else if (value < 10) {
-        return value; // Base case: single-digit number
-    } else {
-        int lastDigit = value % 10;
-        int remainingDigits = value / 10;
-        int reversed = reverseDigit(remainingDigits);
-        int numDigits = 0;
-        int temp = value;
-        
-        while (temp > 0) {
-            temp /= 10;
-            numDigits++;
-        }
-        
-        return (lastDigit * pow(10, numDigits-1)) + reversed;
+        return -1;
     }
+    if (value < 10) {
+        return value;
+    }
+    return reverseDigit(value / 10) + (value % 10) * pow(10, floor(log10(abs(value))));
 }
 
-std::string Reverser::reverseString(std::string letters) {
-    if (letters.empty()) {
-        return "";
-    } else if (letters.length() == 1) {
-        return letters;
-    } else {
-        char firstChar = letters[0];
-        std::string remainingChars = letters.substr(1);
-        std::string reversedRemainingChars = reverseString(remainingChars);
-        if (reversedRemainingChars == "ERROR") {
-            return "ERROR"; // propagate the error indicator
-        }
-        return reversedRemainingChars + firstChar;
+string Reverser::reverseString(string characters) {
+    if (characters.length() == 0) {
+        return "ERROR";
     }
+    if (characters.length() == 1) {
+        return characters;
+    }
+
+    return characters.back() + reverseString(characters.substr(0, characters.length() - 1));
 }
