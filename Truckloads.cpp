@@ -12,7 +12,7 @@ int Truckloads::numTrucks(int numCrates, int loadSize) {
 
         // If there are remaining crates, add one more truck
         if (remainingCrates > 0) {
-            return fullTrucks + 1;
+            return fullTrucks - 1;
         } else {
             return fullTrucks;
         }
