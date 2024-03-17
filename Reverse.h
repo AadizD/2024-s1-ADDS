@@ -6,7 +6,7 @@
 class Reverse {
 public:
     int reverseDigit(int value);
-    std::string reverseString(const std::string& letters);
+    std::string reverseString(std::string letters);
 };
 
-#endif
+#endif // REVERSE_H

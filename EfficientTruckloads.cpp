@@ -1,23 +1,19 @@
-#include "EfficientTruckloads.h"
+#include "EfficientTruckLoads.h"
 
 int EfficientTruckLoads::numTrucks(int numCrates, int loadSize) {
-    // Check if the result is already memoized
-    if (memo.find({numCrates, loadSize}) != memo.end()) {
-        return memo[{numCrates, loadSize}];
-    }
-    
-    // Base case: If there are fewer crates than the load size, return 1 truck
     if (numCrates <= loadSize) {
-        memo[{numCrates, loadSize}] = 1;
-        return 1;
+        return 1; // Base case: all crates fit in one truckload
     }
     
-    // Recursive case: Split the load into two equal parts and calculate trucks needed
-    int halfLoad = numCrates / 2;
-    int trucks = numTrucks(halfLoad, loadSize) + numTrucks(numCrates - halfLoad, loadSize);
+    if (memo.find(numCrates) != memo.end()) {
+        return memo[numCrates]; // Return memoized value if available
+    }
     
-    // Memoize the result
-    memo[{numCrates, loadSize}] = trucks;
+    int remainingCrates = numCrates - loadSize;
+    int trucksNeeded = numTrucks(remainingCrates, loadSize);
+    int result = trucksNeeded + 1; // Add one truck for the current load
     
-    return trucks;
+    memo[numCrates] = result; // Store calculated value in memo
+    
+    return result;
 }
