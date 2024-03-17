@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 
-class EfficientTruckLoads {
+class EfficientTruckloads {
 private:
     std::unordered_map<int, int> memo;
     
