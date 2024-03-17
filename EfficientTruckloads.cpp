@@ -15,5 +15,5 @@ int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
     
     memo[numCrates] = result; // Store calculated value in memo
     
-    return result;
+    return result; //
 }

@@ -7,5 +7,5 @@ int Truckloads::numTrucks(int numCrates, int loadSize) {
         int remainingCrates = numCrates - loadSize;
         int trucksNeeded = numTrucks(remainingCrates, loadSize);
         return trucksNeeded + 1; // Add one truck for the current load
-    }
+    } //
 };
