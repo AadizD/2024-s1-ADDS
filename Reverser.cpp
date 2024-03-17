@@ -1,7 +1,9 @@
-#include "Reverse.h"
+#include "Reverser.h"
 #include <cmath>
+#include <string>
 
-int Reverse::reverseDigit(int value) {
+
+int Reverser::reverseDigit(int value) {
     if (value < 0) {
         return -1; // Error indicator for invalid input
     } else if (value < 10) {
@@ -22,7 +24,7 @@ int Reverse::reverseDigit(int value) {
     }
 }
 
-std::string Reverse::reverseString(std::string letters) {
+std::string Reverser::reverseString(std::string letters) {
     if (letters.empty()) {
         return "";
     } else if (letters.length() == 1) {
