@@ -1,19 +1,23 @@
 #include "EfficientTruckloads.h"
 
+#include <cmath>
+#include <map>
+
+using namespace std;
+
 int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
     if (numCrates <= loadSize) {
-        return 1; // Base case: all crates fit in one truckload
+        return 1;
     }
-    
-    if (memo.find(numCrates) != memo.end()) {
-        return memo[numCrates]; // Return memoized value if available
+
+    int cratesFloor = floor(numCrates / 2.0f);
+    int createCeil = ceil(numCrates / 2.0f);
+
+    static map<int, int> storedValues;
+
+    if (storedValues.find(numCrates) == storedValues.end()) {
+        storedValues[numCrates] = numTrucks(cratesFloor, loadSize) + numTrucks(createCeil, loadSize);
     }
-    
-    int remainingCrates = numCrates - loadSize;
-    int trucksNeeded = numTrucks(remainingCrates, loadSize);
-    int result = trucksNeeded + 1; // Add one truck for the current load
-    
-    memo[numCrates] = result; // Store calculated value in memo
-    
-    return result; //
+
+    return storedValues[numCrates];
 }
