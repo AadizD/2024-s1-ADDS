@@ -11,4 +11,4 @@ public:
     int numTrucks(int numCrates, int loadSize);
 };
 
-#endif // EFFICIENTTRUCKLOADS_H //
+#endif // EFFICIENTTRUCKLOADS_H ////
